@@ -2,7 +2,7 @@ import nltk
 from sets import Set
 
 class SentenceGrammarAnalyzer:
-    REPLY_POS_VALID_UNIVERSAL_TAGS = Set(['CONJ', 'ADV'])
+    REPLY_POS_VALID_UNIVERSAL_TAGS = Set(['CONJ'])
     # check http://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html for
     # a good list
     REPLY_POS_VALID_UPENN_TAGS = Set(['WDT', 'DT'])
