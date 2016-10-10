@@ -22,15 +22,13 @@ class Model:
         if (len(tokensA) == 0 or len(tokensB) == 0):
             return (1e30, 0) # orthogonal
         cosine = self.innerModel.n_similarity(tokensA, tokensB)
-        movers = self.moversDistance(tokensA, tokensB)
-        return (movers, cosine)
+        centroid = self.centroidDistance(tokensA, tokensB)
+        return (centroid, cosine)
 
-    def moversDistance(self, tokensA, tokensB):
-        movers = self.wordEuclidDistance(tokensA[0], tokensB[0])
-        for tokenA in tokensA:
-            for tokenB in tokensB:
-                movers = min(movers, self.wordEuclidDistance(tokenA, tokenB))
-        return movers
+    def centroidDistance(self, tokensA, tokensB):
+        centroidA = sum([self[t] for t in tokensA]) / len(tokensA)
+        centroidB = sum([self[t] for t in tokensB]) / len(tokensB)
+        return np.linalg.norm(self.centroid(tokensA) - self.centroid(tokensB))
 
-    def wordEuclidDistance(self, tokenA, tokenB):
-        return np.linalg.norm(self[tokenA] - self[tokenB])
+    def centroid(self, tokens):
+        return sum([self[t] for t in tokens]) / len(tokens)

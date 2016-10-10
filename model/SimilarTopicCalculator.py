@@ -13,8 +13,10 @@ class SimilarTopicCalculator:
         bestTopic = None
         for topic in self.window.getTopics():
             for topic_message in topic.getMessages():
-                (movers, cosine)= self.model.calculateSimilarity(message, topic_message)
-                features = (-movers, cosine, topic)
+                (centroid, cosine)= self.model.calculateSimilarity(message, topic_message)
+                # roud up to 10
+                centroid = int(centroid * 10) / 10.
+                features = (-centroid, cosine, topic)
                 if bestTopic is None or bestTopic <  features:
                     bestTopic = features
 
