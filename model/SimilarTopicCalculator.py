@@ -5,9 +5,9 @@ from Model import Model
 INF = 10000000
 
 class SimilarTopicCalculator:
-    def __init__(self, window, messages):
+    def __init__(self, window, messages, tokenizer):
         self.window = window
-        self.model = Model(messages)
+        self.model = Model(messages, tokenizer)
 
     def calculate(self, message):
         best_topic = (-INF, None)

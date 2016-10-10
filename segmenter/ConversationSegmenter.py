@@ -4,12 +4,13 @@ from model.ReplyObjectPredictor import ReplyObjectPredictor
 from text.Topic import Topic
 
 class ConversationSegmenter:
-    def __init__(self, messages, windowSize, alpha):
+    def __init__(self, messages, windowSize, alpha, tokenizer):
         self.messages = messages
         self.window = Window(windowSize)
-        self.similarTopicCalculator = SimilarTopicCalculator(self.window, messages)
+        self.similarTopicCalculator = SimilarTopicCalculator(
+            self.window, messages, tokenizer)
         self.replyObjectPredictor = ReplyObjectPredictor(
-            self.window, alpha, self.similarTopicCalculator)
+            self.window, alpha, self.similarTopicCalculator, tokenizer)
 
     def segment(self):
         topics = [None for i in self.messages]

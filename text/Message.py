@@ -1,17 +1,18 @@
-from nltk import word_tokenize
 import numpy as np
 
-class Message:
-    def __init__(self, text, author):
-        self.text = text
-        self.vectorText = word_tokenize(text)
-        self.author = author
 
-    def getVectorText(self):
-        return self.vectorText
+class Message:
+    def __init__(self, id, text, author):
+        self.id = id
+        self.text = text
+        self.vectorText = None
+        self.author = author
 
     def getAuthor(self):
         return self.author
 
     def getText(self):
         return self.text
+
+    def getID(self):
+        return self.id
