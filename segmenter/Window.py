@@ -6,9 +6,13 @@ class Window:
         self.windowSize = window_size
 
     def addTopic(self, topic):
-        self.topics.append(topic)
-        if len(self.topics) == self.windowSize + 1:
-            self.topics = self.topics[1:-1]
+        if topic in self.topics:
+            index = self.topics.index(topic)
+            self.topics[index], self.topics[-1] = self.topics[-1], self.topics[index]
+        else:
+            self.topics.append(topic)
+            if len(self.topics) == self.windowSize + 1:
+                self.topics = self.topics[1:]
 
     def getTopics(self):
         return self.topics

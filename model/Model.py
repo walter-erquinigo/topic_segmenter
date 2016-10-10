@@ -17,6 +17,20 @@ class Model:
         return self.innerModel[index]
 
     def calculateSimilarity(self, messageA, messageB):
-        return self.innerModel.n_similarity(
-            self.tokenizer.stemAndTokenize(messageA),
-            self.tokenizer.stemAndTokenize(messageB))
+        tokensA = self.tokenizer.stemAndTokenize(messageA)
+        tokensB = self.tokenizer.stemAndTokenize(messageB)
+        if (len(tokensA) == 0 or len(tokensB) == 0):
+            return (1e30, 0) # orthogonal
+        cosine = self.innerModel.n_similarity(tokensA, tokensB)
+        movers = self.moversDistance(tokensA, tokensB)
+        return (movers, cosine)
+
+    def moversDistance(self, tokensA, tokensB):
+        movers = self.wordEuclidDistance(tokensA[0], tokensB[0])
+        for tokenA in tokensA:
+            for tokenB in tokensB:
+                movers = min(movers, self.wordEuclidDistance(tokenA, tokenB))
+        return movers
+
+    def wordEuclidDistance(self, tokenA, tokenB):
+        return np.linalg.norm(self[tokenA] - self[tokenB])

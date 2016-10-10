@@ -2,7 +2,7 @@ import gensim
 import sys
 from Model import Model
 
-INF = 10000000
+INF = 1e30
 
 class SimilarTopicCalculator:
     def __init__(self, window, messages, tokenizer):
@@ -10,14 +10,17 @@ class SimilarTopicCalculator:
         self.model = Model(messages, tokenizer)
 
     def calculate(self, message):
-        best_topic = (-INF, None)
+        bestTopic = None
         for topic in self.window.getTopics():
-            similarity = self.model.calculateSimilarity(topic.getStartMessage(), message)
-            best_topic = max(best_topic, (similarity, topic))
+            for topic_message in topic.getMessages():
+                (movers, cosine)= self.model.calculateSimilarity(message, topic_message)
+                features = (-movers, cosine, topic)
+                if bestTopic is None or bestTopic <  features:
+                    bestTopic = features
 
-        if best_topic[0] == -INF:
+        if bestTopic is None:
             sys.exit("The window is empty")
-        return TopicSimilarity(best_topic[1], best_topic[1])
+        return TopicSimilarity(bestTopic[2], bestTopic[1])
 
 class TopicSimilarity:
     def __init__(self, topic, score):

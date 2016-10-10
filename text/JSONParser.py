@@ -17,4 +17,6 @@ class JSONParser:
     def getMessages(self):
         users = self.jsonObject[USER]
         texts = self.jsonObject[ANON_TEXT]
-        return [Message(id, texts[id], users[id]) for id in users.keys()]
+        return sorted(
+            [Message(int(id), texts[id], users[id]) for id in users.keys()],
+            key=lambda message: message.getID())

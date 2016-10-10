@@ -1,13 +1,21 @@
 class Topic:
-    def __init__(self, startMessage):
+    def __init__(self, startMessage, reason):
         self.startMessage = startMessage
-        self.messages = []
+        self.messages = [startMessage]
+        self.reasons = [reason]
 
-    def appendMessage(self, message):
+    def appendMessage(self, message, reason):
         self.messages.append(message)
+        self.reasons.append(reason)
 
     def getMessages(self):
         return self.messages
 
+    def getReasons(self):
+        return self.reasons
+
     def getStartMessage(self):
         return self.startMessage
+
+    def size(self):
+        return len(self.messages)

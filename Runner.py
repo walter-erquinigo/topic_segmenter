@@ -13,23 +13,35 @@ class TestRunner:
         parser = JSONParser(self.jsonFileName)
         self.messages = parser.getMessages()
         self.tokenizer = MessageTokenizer()
-        segmenter = ConversationSegmenter(self.messages, 3, 0.2, self.tokenizer)
+        windowSize = 3
+        cosineSimilarityThreshold = 0.75
+        segmenter = ConversationSegmenter(
+            self.messages, windowSize, cosineSimilarityThreshold, self.tokenizer)
         topics = segmenter.segment()
         self.report(topics)
 
     def report(self, topics):
         idGroups = []
+        print("============================= detailed ========================")
         for topic in topics:
             print("== Topic ==")
             idGroup = []
-            for message in topic.getMessages():
+            for (message, reason) in zip(topic.getMessages(), topic.getReasons()):
                 idGroup.append(message.getID())
-                print("\t" + message.getText())
-                print("\t\t" + str(self.tokenizer.stemAndTokenize(message)))
+                print("\n\t------ id: \t" + str(message.getID()) + "\t" + reason)
+                print("" + message.getText())
             print("\n")
             idGroups.append(idGroup)
 
         print("===============================")
+
+        print("============================= short ========================")
+        for topic in topics:
+            print("== Topic ==")
+            for message in topic.getMessages():
+                print(str(message.getID()) + ":\t" + message.getText())
+            print("\n")
+
         print(idGroups)
 
 
