@@ -30,4 +30,17 @@ class ConversationSegmenter:
                     topic.appendMessage(message, reason)
                 self.window.addTopic(topic)
                 topics[i] = topic
+
+        # eliminate mistopics
+        i = 0
+        while i < len(topicSet):
+            if topicSet[i].size() > 2 or i == 0:
+                pass
+            otherMessages = topicSet[i - 1].getMessages()
+            messages = topicSet[i].getMessages()
+            if messages[0].getID() > otherMessages[0].getID() and messages[-1].getID() < otherMessages[-1].getID():
+                topicSet[i - 1].absorve(topicSet[i])
+                topicSet.remove(topicSet[i])
+            else:
+                i = i + 1
         return topicSet

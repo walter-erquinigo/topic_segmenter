@@ -23,14 +23,14 @@ class Model:
         width = 10
         startA = 0
         best = (float('inf'), 0) # orthogonal
-
+        decay = (0.993 ** indexDistance) # must be related to the cosine threshold
         while startA < len(fullTokensA):
             startB = 0
             tokensA = fullTokensA[startA:(startA + width)]
             while startB < len(fullTokensB):
                 tokensB = fullTokensB[startB:(startB + width)]
-                cosine = self.innerModel.n_similarity(tokensA, tokensB) * (0.98 ** indexDistance)
-                centroid = self.centroidDistance(tokensA, tokensB)
+                cosine = self.innerModel.n_similarity(tokensA, tokensB) * decay
+                centroid = self.centroidDistance(tokensA, tokensB) / decay
                 pair = (centroid, cosine)
                 if best is None or best > pair:
                     best = pair
