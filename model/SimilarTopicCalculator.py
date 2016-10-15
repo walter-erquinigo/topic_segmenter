@@ -1,8 +1,7 @@
 import gensim
 import sys
+import math
 from Model import Model
-
-INF = 1e30
 
 class SimilarTopicCalculator:
     def __init__(self, window, messages, tokenizer):
@@ -10,27 +9,29 @@ class SimilarTopicCalculator:
         self.model = Model(messages, tokenizer)
 
     def calculate(self, message):
-        bestTopic = None
+        similarities = []
         for topic in self.window.getTopics():
             for topic_message in topic.getMessages():
-                (centroid, cosine)= self.model.calculateSimilarity(message, topic_message)
-                # roud up to 10
-                centroid = int(centroid * 10) / 10.
-                features = (-centroid, cosine, topic)
-                if bestTopic is None or bestTopic <  features:
-                    bestTopic = features
-
-        if bestTopic is None:
-            sys.exit("The window is empty")
-        return TopicSimilarity(bestTopic[2], bestTopic[1])
+                (centroidDistance, cosine) = self.model.calculateSimilarity(message, topic_message)
+                similarities.append(TopicSimilarity(topic, cosine, centroidDistance))
+        similarities.sort(key=lambda x: x.getCentroidDistance())
+        # get top 5 percent
+        size = int(math.ceil(len(similarities) * 5. / 100))
+        similarities = similarities[0:size]
+        similarities.sort(key= lambda x: -x.getScore())
+        return None if len(similarities) == 0 else similarities[0]
 
 class TopicSimilarity:
-    def __init__(self, topic, score):
+    def __init__(self, topic, score, centroidDistance):
         self.topic = topic
         self.score = score
+        self.centroidDistance = centroidDistance
 
     def getTopic(self):
         return self.topic
 
     def getScore(self):
         return self.score
+
+    def getCentroidDistance(self):
+        return self.centroidDistance
