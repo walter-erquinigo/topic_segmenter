@@ -12,7 +12,8 @@ class SimilarTopicCalculator:
         similarities = []
         for topic in self.window.getTopics():
             for topic_message in topic.getMessages():
-                (centroidDistance, cosine) = self.model.calculateSimilarity(message, topic_message)
+                (centroidDistance, cosine) = self.model.calculateSimilarity(
+                    message, topic_message, message.getID() - topic_message.getID())
                 similarities.append(TopicSimilarity(topic, cosine, centroidDistance))
         similarities.sort(key=lambda x: x.getCentroidDistance())
         # get top 5 percent
