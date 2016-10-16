@@ -46,6 +46,7 @@ When we want to find the similarity distance between two messages, we first find
 ## Sample Output:
 
 == Topic ==
+
 2.    In addition, because none of this is associated with our university addresses, we are not subject to FOIAs, so we can say dumb things without the threat of being taken down for it.
 4.    yeo!
 5.    we can share the codes `inline = rnorm(1,1,1)` and in blocks ``` blocks = rnorm(100, 1, 1) ```
@@ -61,6 +62,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 17.    My first thought was to use this to examine candidate press releases. I wonder about the extent to which the gender tone of these statement varies across parties and/or according to the gender of the candidate.
 18.    Does a current corpus exist? Would love to know how Trump comes out in a mysogeny (sp???) score.
 20.    I dunno, Trudeau’s campaign was pretty awesome.
@@ -69,6 +71,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 23.    k. i’m there too...
 24.    Is anybody mailing stamps to all-mail states? Perhaps for the general election the feds are taking care of postage, but for primaries people still have to pay postage (because it is not _strictly_ federal elections). Dammit, we should have done that.
 25.    That would have been a sweet intervention.
@@ -78,18 +81,21 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 29.    I’m with you here except for Oregon. Why Oregon?
 30.    All mail state.
 31.    So there is no selection into who is mailing and who is going in person.
 
 
 == Topic ==
+
 32.    Wow. I didn’t know that.
 33.    Address from voting files?
 34.    *addresses
 
 
 == Topic ==
+
 35.    Yup. Those are going to be HELLA high fidelity because they are an all mail state.
 36.    Additional treatment condition: mailing 2x the postage that is necessary, building in an explicit spillover on co-residents.
 37.    That would be dope. No one has done this in the past? Seems like something Green/Gerber would have stumbled on at some point. If not, it is pretty sweet. No possible harms that I can imagine.
@@ -97,6 +103,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 38.    I dunno. Seems so low hanging. SO low hanging.
 39.    Here’s the closest I can find. From 2015. A natural experiment in Switzerland.
 40.    <http://www.econstor.eu/bitstream/10419/123257/1/cesifo_wp5617.pdf>
@@ -108,6 +115,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 47.    You and me both...
 48.    Still, the simplicity is attractive. Plus, I always wanted to do a GOTV experiment
 49.    But yeah - dissertation
@@ -125,21 +133,25 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 62.    Hey <@U16RAECF5> I’m working on that Pol Behavior submission today, are you around for questions?
 63.    <@U16RLTH3N>: yepski. give me a call whenevs.
 
 
 == Topic ==
+
 64.    Aight, or we can iterate in here a little bit to support the changes that I’m making in the file in Dropbox. You’re probably seeing it ping around right now.
 65.    I’ll put this talk in <#C1H66683U> for today, and then we can just remove it tomorrow when we submit.
 
 
 == Topic ==
+
 66.    Mute this topic bitch
 68.    Im sorry. It's the sudafed
 
 
 == Topic ==
+
 69.    Lookin’ a bit like Ahab there.
 70.    Sudafed*:wine_glass:
 71.    I'm working on it
@@ -150,6 +162,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 76.    2.5 months Apperantly
 77.    Alex!!!!
 78.    MR_PINK and I are harassing MR_WHITE on another channel. It's Alex's fault
@@ -158,12 +171,14 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 81.    I like this app
 82.    <@U16TY5M6F>: How did that USAID boondoggle in Haiti end up going for you?
 83.    And, um... congratulations to each of you for discovering the effect of penis names on responses to requests for information. Wang Dong!
 
 
 == Topic ==
+
 84.    Thanks Alex. We think that this finding makes several contributions and has obvious familial implications. That is, parents shouldn't name their kid Richard.
 85.    you guys are actually fucked in the head. here's something of value: <http://stanford.edu/~dbroock/stanford-berkeley-opinion-survey/Stanford-Berkeley_Survey_of_Public_Opinion/Stanford-Berkeley_Opinion_Survey.html>
 86.    People – can I please have the basic citation on parental influence? Is it Converse? Please excavation point?
@@ -189,6 +204,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 107.    <@U16RAECF5>: Unfortunately, no. I looked for something like this when I was reviewing a proposal for the National Opinion Research Center but couldn’t find anything like it. The proposed intervention was sooooooooooooooooo bad.
 108.    <@U16RAECF5>: Also, I’m working out responses to your emails. One of them is almost perfectly in line with something that I just spoke with Matt Golder about earlier today. It was like you read my mind. Spooky.
 109.    :grinning:
@@ -222,6 +238,7 @@ When we want to find the similarity distance between two messages, we first find
 
 
 == Topic ==
+
 139.    I’ll let you know what is out there when my librarian gets back with me. If Leadership Directories has put it together for us already, it would be _the_ dope.
 140.    (BTW: I don’t know what IIA is...)
 141.    Also, ask and you shall receive. I bring forth the data, or at least a demonstration that we can has the data.
