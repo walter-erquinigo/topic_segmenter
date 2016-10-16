@@ -47,10 +47,10 @@ When we want to find the similarity distance between two messages, we first find
 
 == Topic ==
 
-2.    In addition, because none of this is associated with our university addresses, we are not subject to FOIAs, so we can say dumb things without the threat of being taken down for it.
-4.    yeo!
-5.    we can share the codes `inline = rnorm(1,1,1)` and in blocks ``` blocks = rnorm(100, 1, 1) ```
-6.    And, things stay in places that make sense.
+- 2:    In addition, because none of this is associated with our university addresses, we are not subject to FOIAs, so we can - say dumb things without the threat of being taken down for it.
+- 4:    yeo!
+- 5:    we can share the codes `inline = rnorm(1,1,1)` and in blocks ``` blocks = rnorm(100, 1, 1) ```
+- 6:    And, things stay in places that make sense.
 7.    There are presently two additional channels to keep things straight. <#C16S81202> and <#C16RM7TD2> “subscribe" to those if you haven’t.
 8.    Also, the phone and desktop clients are nice.
 11.    sup <@U16S9N0LE>
