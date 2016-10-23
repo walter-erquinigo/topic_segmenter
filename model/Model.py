@@ -16,14 +16,27 @@ class Model:
     def __getitem__(self, index):
         return self.innerModel[index]
 
-    def calculateSimilarity(self, messageA, messageB):
-        tokensA = self.tokenizer.stemAndTokenize(messageA)
-        tokensB = self.tokenizer.stemAndTokenize(messageB)
-        if (len(tokensA) == 0 or len(tokensB) == 0):
-            return (1e30, 0) # orthogonal
-        cosine = self.innerModel.n_similarity(tokensA, tokensB)
-        centroid = self.centroidDistance(tokensA, tokensB)
-        return (centroid, cosine)
+    def calculateSimilarity(self, messageA, messageB, indexDistance):
+        fullTokensA = self.tokenizer.stemAndTokenize(messageA)
+        fullTokensB = self.tokenizer.stemAndTokenize(messageB)
+
+        width = 10
+        startA = 0
+        best = (float('inf'), 0) # orthogonal
+        decay = (0.993 ** indexDistance) # must be related to the cosine threshold
+        while startA < len(fullTokensA):
+            startB = 0
+            tokensA = fullTokensA[startA:(startA + width)]
+            while startB < len(fullTokensB):
+                tokensB = fullTokensB[startB:(startB + width)]
+                cosine = self.innerModel.n_similarity(tokensA, tokensB) * decay
+                centroid = self.centroidDistance(tokensA, tokensB) / decay
+                pair = (centroid, cosine)
+                if best is None or best > pair:
+                    best = pair
+                startB = startB + width / 2
+            startA = startA + width / 2
+        return best
 
     def centroidDistance(self, tokensA, tokensB):
         centroidA = sum([self[t] for t in tokensA]) / len(tokensA)

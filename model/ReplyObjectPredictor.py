@@ -14,12 +14,14 @@ class ReplyObjectPredictor:
             return (None, 'window empty')
         similarity = self.similarTopicCalculator.calculate(message)
         best_topic = (None, 'no similarity nor grammatically a reply')
+        topics = self.window.getTopics()
         analyzer = SentenceGrammarAnalyzer(message, self.tokenizer)
         (isReply, reason) = analyzer.isAReply()
-        if isReply:
-            best_topic = (similarity.getTopic(), 'grammatically ' + reason)
+
+        if isReply and len(topics) > 0:
+            best_topic = (topics[-1], 'grammatically ' + reason)
         elif similarity.getScore() >= self.cosineSimilarityThreshold:
             best_topic = (similarity.getTopic(), 'cosine ' + str(similarity.getScore()))
-        elif self.window.getTopics()[-1].size() == 1:
-            best_topic = (self.window.getTopics()[-1], 'previous topic with one element')
+        elif topics[-1].size() == 1:
+            best_topic = (topics[-1], 'previous topic with one element')
         return best_topic

@@ -19,3 +19,7 @@ class Topic:
 
     def size(self):
         return len(self.messages)
+
+    def absorve(self, other):
+        self.messages = self.messages + other.messages
+        self.messages.sort(key=lambda x: x.getID())
