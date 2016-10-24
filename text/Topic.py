@@ -23,3 +23,4 @@ class Topic:
     def absorve(self, other):
         self.messages = self.messages + other.messages
         self.messages.sort(key=lambda x: x.getID())
+        self.reasons.extend( other.reasons )  # append reasons from other topic
